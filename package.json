@@ -1,0 +1,14 @@
+{
+  "name": "Api_Stripe",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./dist/index.js",
+    "debug": "nodemon --watch src ./index.ts --exec ts-node ./index.ts"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
