@@ -1,6 +1,6 @@
 /* import MySQL from '../db/MySQL'; */
-import Cartes from "./Carte";
-export default class Carte {
+import Carte from "./Carte";
+export default class Stripe {
 
     protected id_stripe : number;
     public id_carte: Carte;
