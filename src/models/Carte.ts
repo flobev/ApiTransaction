@@ -1,4 +1,5 @@
 /* import MySQL from '../db/MySQL'; */
+import Utilisateur from "./Utilisateur";
 export default class Carte {
 
     protected id_carte : number;
@@ -6,9 +7,9 @@ export default class Carte {
     public mois: string | null;
     public annee: string | null;
     public defaut: string | null;
-    public id_utilisateur: number;
+    public id_utilisateur: Utilisateur;
 
-    constructor(id: number, numero_carte: string = '', mois: string = '', annee: string = '', defaut: string = '', id_utilisateur: number) {
+    constructor(id: number, numero_carte: string = '', mois: string = '', annee: string = '', defaut: string = '', id_utilisateur: Utilisateur) {
         this.id_carte = id;
         this.numero_carte = (numero_carte === undefined) ? null : numero_carte;
         this.mois = (mois === undefined) ? null : mois;
