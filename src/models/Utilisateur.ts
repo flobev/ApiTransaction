@@ -1,6 +1,7 @@
+/* import MySQL from '../db/MySQL'; */
 export default class Utilisateur {
 
-    private id_utilisateur: number;
+    protected id_utilisateur?: number | null;
     private nom: string;
     private prenom: string;
     private email: string;
@@ -12,22 +13,53 @@ export default class Utilisateur {
     private modification: string | null;
     private abonnement: string | null;
 
-    constructor(id_utilis: number, nom: string, prenom: string, email: string, mdp: string, sexe: string, date_naissance: string, role?: string, creation?: string, modification?: string, abonnement?: string){
-        this.id_utilisateur = id_utilis;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
-        this.mdp = mdp;
-        this.sexe = sexe;
-        this.date_naissance = date_naissance;
-        this.role = (role === undefined) ? null : role;
-        this.creation = (creation === undefined) ? null : creation;
-        this.modification = (modification === undefined) ? null : modification;
-        this.abonnement = (abonnement === undefined) ? null : abonnement;
+    protected table: string = 'utilisateur';
+
+    /**
+     * Creates an instance of Utilisateur.
+     * @param {(Utilisateur(instance) | null)} id
+     * @param {string} [nom]
+     * @param {string} [prenom]
+     * @param {string} [email]
+     * @param {string} [mdp]
+     * @param {string} [sexe]
+     * @param {string} [date_naissance]
+     * @param {string} [role='']
+     * @param {string} [creation='']
+     * @param {string} [modification='']
+     * @param {string} [abonnement='']
+     * @memberof Utilisateur
+     */
+
+    constructor(utilisateur: Utilisateur | null, nom: string, prenom: string, email: string, mdp: string, sexe: string, date_naissance: string, role: string = '', creation: string = '', modification: string = '', abonnement: string = ''){
+        if (utilisateur === null) {
+            this.nom = nom.toUpperCase().trim();;
+            this.prenom = prenom.toLowerCase().trim();
+            this.email = email;
+            this.mdp = mdp;
+            this.sexe = sexe;
+            this.date_naissance = date_naissance;
+            this.role = (role === undefined) ? null : role;
+            this.creation = (creation === undefined) ? null : creation;
+            this.modification = (modification === undefined) ? null : modification;
+            this.abonnement = (abonnement === undefined) ? null : abonnement;
+        } else {
+            this.nom = utilisateur.nom;
+            this.prenom = utilisateur.prenom;
+            this.email = utilisateur.email;
+            this.mdp = utilisateur.mdp;
+            this.sexe = utilisateur.sexe;
+            this.date_naissance = utilisateur.date_naissance;
+            this.role = (utilisateur.role === undefined) ? null : utilisateur.role;
+            this.creation = (utilisateur.creation === undefined) ? null : utilisateur.creation;
+            this.modification = (utilisateur.modification === undefined) ? null : utilisateur.modification;
+            this.abonnement = (utilisateur.abonnement === undefined) ? null : utilisateur.abonnement;
+            this.id_utilisateur = utilisateur.id;
+        }
     }
 
     get id(): number {
-        return this.id_utilisateur;
+        return <number > this.id_utilisateur;
     }
 
     get lastName(): string {
@@ -70,4 +102,28 @@ export default class Utilisateur {
         return (this.nom === null) ? '' : this.nom;
     }
 
+
+    get attributInsert(): Array < string > {
+        return ['nom', 'prenom', 'email', 'mdp', 'sexe', 'role', 'date_naissance', 'creation', 'modification', 'abonnement']
+    }
+
+
+    /**
+     *
+     * Save to the property in database
+     * @returns {Promise < number >}
+     * @memberof Personne
+     */
+    /* save(): Promise < number > {
+        return new Promise((resolve, reject) => {
+            MySQL.insert(this.table, this).then((id: number) => {
+                this.idpersonne = id;
+                console.log(`Save ${this.table}`);
+                resolve(id)
+            }).catch((err) => {
+                console.log(err);
+                reject(false)
+            })
+        })
+    };  */
 }
