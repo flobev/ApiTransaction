@@ -2,7 +2,7 @@ import { UtilisateurInterfaces } from './Utilisateur';
 
 export interface TuteurInterfaces extends UtilisateurInterfaces {
     
-    personne_idpersonne: number | null | undefined;
+    utilisateur_id_utilisateur: number | null | undefined;
     id_tuteur: number;
     save(): Promise < number >
 }
