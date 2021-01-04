@@ -1,6 +1,6 @@
 /* import MySQL from '../db/MySQL'; */
 import Stripe from "./Stripe";
-export default class Carte {
+export default class Facture {
 
     protected id_facture : number;
     public date_facture: string | null;
