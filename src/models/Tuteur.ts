@@ -1,5 +1,7 @@
 import Utilisateur from "./Utilisateur";
 
+import { jointureInterface } from '../db/MySQL';
+
 export default class Tuteur extends Utilisateur {
 
     id_tuteur: number | null;
