@@ -1,3 +1,5 @@
+import MySQL from "../db/MySQL";
+
 /* import MySQL from '../db/MySQL'; */
 export default class Utilisateur {
 
@@ -105,9 +107,9 @@ export default class Utilisateur {
     }
 
 
-    /* get attributInsert(): Array < string > {
+    get attributInsert(): Array < string > {
         return ['nom', 'prenom', 'email', 'mdp', 'sexe', 'role', 'date_naissance', 'creation', 'modification', 'abonnement']
-    } */
+    }
 
 
     /**
@@ -116,10 +118,10 @@ export default class Utilisateur {
      * @returns {Promise < number >}
      * @memberof Personne
      */
-    /* save(): Promise < number > {
+    save(): Promise < number > {
         return new Promise((resolve, reject) => {
             MySQL.insert(this.table, this).then((id: number) => {
-                this.idpersonne = id;
+                this.id_utilisateur = id;
                 console.log(`Save ${this.table}`);
                 resolve(id)
             }).catch((err) => {
@@ -127,5 +129,5 @@ export default class Utilisateur {
                 reject(false)
             })
         })
-    };  */
+    }; 
 }
