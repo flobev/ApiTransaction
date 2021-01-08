@@ -74,6 +74,10 @@ export default class Utilisateur {
         return <string> this.prenom;
     }
 
+    get fullname(): string {
+        return this.prenom + ' ' + this.nom;
+    }
+
     get mail(): string {
         return <string> this.email;
     }
@@ -116,7 +120,7 @@ export default class Utilisateur {
      *
      * Save to the property in database
      * @returns {Promise < number >}
-     * @memberof Personne
+     * @memberof Utilisateur
      */
     save(): Promise < number > {
         return new Promise((resolve, reject) => {
@@ -129,5 +133,24 @@ export default class Utilisateur {
                 reject(false)
             })
         })
-    }; 
+    };
+
+    static select(where: any) {
+        return new Promise((resolve, reject) => {
+            MySQL.select('utilisateur', where).then((arrayUtilisateur: Array < any > ) => {
+                    let data: Array < Utilisateur > = [];
+                    for (const utilisateur of arrayUtilisateur) {
+                        utilisateur.date_naissance = new String(utilisateur.date_naissance)
+                        utilisateur.id = utilisateur.id_utilisateur;
+                        data.push(new Utilisateur(utilisateur));
+                    }
+                    console.log(data);
+                    resolve(data)
+                })
+                .catch((err: any) => {
+                    console.log(err);
+                    reject(false)
+                });
+        })
+    }
 }
