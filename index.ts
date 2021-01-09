@@ -1,4 +1,4 @@
-import bodyParser from "body-parser";
+/* import bodyParser from "body-parser";
 import { config } from "dotenv";
 import express from "express";
 import cors from "cors";
@@ -18,4 +18,4 @@ app.use('/auth', AuthentificationRoute);
 app.listen(process.env.PORT, async() => {
     console.log(await PasswordException.hashPassword("Zoubida"));
     console.log(`Server run to http://localhost:${process.env.PORT}`);
-})
+}) */
