@@ -1,12 +1,10 @@
-export interface UserInterfaces {
-  idFacture?: number;
-  idStripe?: number;
-  datePayment?: any;
-  montantHT?: number;
-  montantTTC?: string;
-  source?: string;
-  createdAt?: any;
-  updateAt?: any;
-  stripeIdStripe?: number;
+export interface FactureInterfaces {
+  id_facture: number;
+  date_facture: string;
+  montant_ht: string;
+  montant_ttc: string;
+  source: string;
+  creation: string;
+  modification: string;
   save(): Promise<number>;
 }

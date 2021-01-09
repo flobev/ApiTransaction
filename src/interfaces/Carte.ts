@@ -1,9 +1,9 @@
-export interface UserInterfaces {
-  idcarte?: number;
-  numeroCarte?: number;
-  mois?: number;
-  annee?: number;
-  default?: number;
-  utilisateurIdUtilisateur?: number;
+export interface CarteInterfaces {
+  utilisateur_id_utilisateur: number | null | undefined;
+  id_carte: number;
+  numero_carte: string;
+  mois: string;
+  annee: string;
+  defaut: string;
   save(): Promise<number>;
 }
