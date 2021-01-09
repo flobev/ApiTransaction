@@ -5,10 +5,6 @@ import { registerMidd, loginMidd, authMidd } from '../middlewares/auth.middlewar
 
 const route: Router = Router();
 
-route.get('/', authMidd, (req: Request, res: Response) => {
-    return res.sendFile(__dirname + '/index.html')
-})
-route.post('/login', loginMidd, AuthController.login)
-route.post('/register', registerMidd, AuthController.register)
+route.put('/user/cart', registerMidd, AuthController.register)
 
 export { route as AuthentificationRoute }
