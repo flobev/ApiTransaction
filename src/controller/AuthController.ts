@@ -54,7 +54,7 @@ export class AuthController {
             const tuteur = new Tuteur(utilisateur, data.email, pass);
             await tuteur.save();
 
-            const theToken: any = await sign({ id: tuteur.utilisateur, name: tuteur.fullname }, < string > process.env.JWT_KEY, { expiresIn: '1m' })
+            const theToken: any = await sign({ id: tuteur.utilisateur_id_utilisateur, name: tuteur.fullname }, < string > process.env.JWT_KEY, { expiresIn: '1m' })
 
             const token = {
                 token: theToken,
@@ -80,7 +80,7 @@ export class AuthController {
             const tuteur = new Tuteur(utilisateur, data.email, pass);
             await tuteur.save();
 
-            const theToken: any = await sign({ id: tuteur.utilisateur, name: tuteur.fullname }, < string > process.env.JWT_KEY, { expiresIn: '1m' })
+            const theToken: any = await sign({ id: tuteur.utilisateur_id_utilisateur, name: tuteur.fullname }, < string > process.env.JWT_KEY, { expiresIn: '1m' })
 
             const token = {
                 token: theToken,
